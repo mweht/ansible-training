@@ -1,7 +1,7 @@
 # ansible-training
 <h2>Useful Ansible commands</h2>
 
-List modules with a brief description
+List modules with a brief description 
 `ansible-doc -l`
 
 Show module information
