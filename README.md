@@ -1,2 +1,4 @@
 # ansible-training
-Documentation and labs for ansible
+<h2>Useful Ansible commands</h2>
+
+'ansible-doc -l | grep user'
