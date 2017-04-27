@@ -2,6 +2,7 @@
 
 Playbooks are stored in YAML format
 
+`
 ---
 - hosts: webservers
   remote_user: root
@@ -10,3 +11,4 @@ Playbooks are stored in YAML format
     yum: name=httpd state=present
   - name: Start Apache
     service: name=httpd state=started
+`
