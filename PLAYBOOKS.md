@@ -67,4 +67,14 @@ Example playbook from Pluralsight
     service: name=iptables state=stopped
 ```
 
-asdf
+Include playbooks/variables on other playbook
+
+```
+tasks:
+  - include: wordpress.yml
+    vars: 
+      sitename: Wordpress Blog
+  - include: loadbalancer.yml
+  - include_vars: variables.yml
+```
+
