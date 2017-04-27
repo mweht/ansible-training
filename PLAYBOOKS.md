@@ -10,3 +10,4 @@ Playbooks are stored in YAML format
     yum: name=httpd state=present
   - name: Start Apache
     service: name=httpd state=started```
+    
