@@ -77,4 +77,71 @@ tasks:
   - include: loadbalancer.yml
   - include_vars: variables.yml
 ```
+Register and save other tasks output for reuse
 
+```
+tasks:
+  - shell: /usr/bin/whoami
+    register: username
+    
+  - file: path=/home.myfile.txt
+          owner={{ username }}
+```
+
+Debug Module
+
+```
+tasks:
+  - debug: msg="This host is {{ inventory_hostname }} during execution"
+  
+  - shell: /usr/bin/whoami
+    register: username
+  - debug: var=username
+```
+
+Prompting for user input and saving it to a variable
+
+```
+- hosts: web1
+
+  vars_prompt:
+    - name: "sitename"
+      prompt: "What is new sitename?"
+      
+  tasks:
+  - debug: msg="The name is {{ sitename }}"
+```
+
+Handlers (Execute a task after some notification)
+
+```
+tasks:
+  - copy: src=files/httpd.conf
+          dest=/etc/httpd/conf/
+    notify:
+        - Apache Restart
+handlers:
+  - name: Apache Restart
+    service: name=httpd state=restarted
+```
+
+Conditionals (Execute a task after logic setup)
+
+```
+tasks:
+  - yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+    
+  - apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+```
+
+```
+tasks:
+  - command: ls /path/doesnt/exists
+    register: result
+    ignore_errors: yes
+    
+  - debug: msg="Failure!"
+    when: result|failed
+```
