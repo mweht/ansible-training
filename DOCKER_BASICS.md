@@ -22,12 +22,17 @@ Install Docker CentOS
 [vagrant@dockertest ~]$ sudo systemctl start docker
 ```
 
+---
+
 Version/Add user to group for use socket
 
 ```
 [vagrant@dockertest ~]$ docker --version
 [vagrant@dockertest ~]$ usermod -a -G docker vagrant
 ```
+
+---
+
 List Docker images / Search Docker images / Run Docker Images
 
 ```
