@@ -12,6 +12,8 @@ gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
 ```
 
+---
+
 Install Docker CentOS
 
 ```
