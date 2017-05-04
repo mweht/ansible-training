@@ -2,14 +2,17 @@
 
 Playbooks are stored in YAML format
 
-Execution of playbook:
+---
+
+Execution of playbook
 
 `$ ansible-playbook playbook.yml`
 
-Example play:
+---
+
+Example play
 
 ```
----
 - hosts: webservers
   remote_user: root
   tasks:
@@ -18,10 +21,12 @@ Example play:
   - name: Start Apache
     service: name=httpd state=started
 ```
+---
 
 Play Declarations:
 
 ```
+
 ---
 - hosts: webservers
   vars:
@@ -32,9 +37,13 @@ Play Declarations:
   sudo_user: wordpress_user
   gather_facts: no
 ```
+
+---
+
 Example playbook from Pluralsight
 
 ```
+
 ---
 - hosts: webservers
   sudo: yes
@@ -67,6 +76,8 @@ Example playbook from Pluralsight
     service: name=iptables state=stopped
 ```
 
+---
+
 Include playbooks/variables on other playbook
 
 ```
@@ -77,6 +88,9 @@ tasks:
   - include: loadbalancer.yml
   - include_vars: variables.yml
 ```
+
+---
+
 Register and save other tasks output for reuse
 
 ```
@@ -88,6 +102,8 @@ tasks:
           owner={{ username }}
 ```
 
+---
+
 Debug Module
 
 ```
@@ -98,6 +114,8 @@ tasks:
     register: username
   - debug: var=username
 ```
+
+---
 
 Prompting for user input and saving it to a variable
 
@@ -112,6 +130,8 @@ Prompting for user input and saving it to a variable
   - debug: msg="The name is {{ sitename }}"
 ```
 
+---
+
 Handlers (Execute a task after some notification)
 
 ```
@@ -124,6 +144,8 @@ handlers:
   - name: Apache Restart
     service: name=httpd state=restarted
 ```
+
+---
 
 Conditionals (Execute a task after logic setup)
 
